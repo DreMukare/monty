@@ -8,33 +8,32 @@
  */
 int add_end_node(stack_t **head, int n)
 {
-  stack_t *new_node;
+	stack_t *new_node;
 
-  if (!head)
-    return (-1);
+	if (!head)
+		return (-1);
 
-  new_node = malloc(sizeof(struct stack_s));/*malloc new node*/
-  if (!new_node)
-    {
-      printf("Error: malloc failed");
-      return (-1);
-    }
+	new_node = malloc(sizeof(struct stack_s));/*malloc new node*/
+	if (!new_node)
+	{
+		printf("Error: malloc failed");
+		return (-1);
+	}
 
-  new_node->n = n;/*set data to new node*/
-  if (*head == NULL)/*account for empty list*/
-    {
-      *head = new_node;
-      new_node->next  = NULL;
-      new_node->prev = NULL;
-    }
-
-  else/*add node at the end*/
-    {
-      new_node->next = *head;
-      (*head)->prev = new_node;
-      *head = new_node;
-    }
-  return (0);
+	new_node->n = n;/*set data to new node*/
+	if (*head == NULL)/*account for empty list*/
+	{
+		*head = new_node;
+		new_node->next  = NULL;
+		new_node->prev = NULL;
+	}
+	else /* add node at the end */
+	{
+		new_node->next = *head;
+		(*head)->prev = new_node;
+		*head = new_node;
+	}
+	return (0);
 }
 
 /**
@@ -44,20 +43,20 @@ int add_end_node(stack_t **head, int n)
  */
 int del_end_node(stack_t **head)
 {
-  stack_t del = NULL;
+	stack_t del = NULL;
 
-  del = *head;
-  if ((*head)->next == NULL)/*account for one node*/
-    {
-      *head = NULL;
-      free(del);
-    }
-  else/*delete node*/
-    {
-      *head = (*head)->next;
-      (*head)->prev = NULL;
-      free(del);
-    }
+	del = *head;
+	if ((*head)->next == NULL)/*account for one node*/
+	{
+		*head = NULL;
+		free(del);
+	}
+	else/*delete node*/
+	{
+		*head = (*head)->next;
+		(*head)->prev = NULL;
+		free(del);
+	}
 }
 
 /**
@@ -66,14 +65,14 @@ int del_end_node(stack_t **head)
  */
 void free_dlist(stack_t **head)
 {
-  /* return if empty list */
-  if (!head)
-    return;
+	/* return if empty list */
+	if (!head)
+		return;
 
-  while (*head && (*head)->next)
-    {
-      *head = (*head)->next;
-      free((*head)->prev);
-    }
-  free(*head);
+	while (*head && (*head)->next)
+	{
+		*head = (*head)->next;
+		free((*head)->prev);
+	}
+	free(*head);
 }
