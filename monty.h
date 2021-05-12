@@ -57,4 +57,10 @@ void nop(stack_t **head, unsigned int line_number);
 void push(stack_t **head, unsigned int line_number, const char *n);
 void pop(stack_t **head, unsigned int line_number);
 
+/* tokenizer */
+char **tokenizer(char *input);
+
+/* frees pointers to pointers */
+void freer(char **buf);
+
 #endif

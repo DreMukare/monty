@@ -8,7 +8,8 @@
  */
 int main(int argc, char *argv[])
 {
-	char *buffer;
+	char *buffer, **tokens;
+	int i = 0;
 
 	if (argc != 2)
 	{
@@ -18,9 +19,16 @@ int main(int argc, char *argv[])
 
 	buffer = file_open(argv[1]);
 
-	printf("%s\n", buffer);
+	tokens = tokenizer(buffer);
+
+	while (tokens[i] != NULL)
+	{
+		printf("%s\n", tokens[i]);
+		i++;
+	}
 	/* place to call other functions then close file */
 
 	free(buffer);
+	freer(tokens);
 	return (0);
 }
