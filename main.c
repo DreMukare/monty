@@ -33,7 +33,8 @@ int main(int argc, char *argv[])
       close(fd);
       exit(EXIT_FAILURE);
     }
-
+  /*place to call other functions then clise file*/
+  
   free(buffer);
   close(fd);
   return (0);

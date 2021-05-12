@@ -44,4 +44,10 @@ int main(int argc, char *argv[]);
 int add_end_node(stack_t **head, int n);
 int del_end_node(stack_t **head);
 void free_dlist(stack_t **head);
+/*print.c*/
+void pall(stack_t **head, unsigned int line_number);
+void pint(stack_t **head, unsigned int line_number);
+void swap(stack_t **head, unsigned int line_number);
+void nop(stack_t **head, unsigned int line_number);
+
 #endif
