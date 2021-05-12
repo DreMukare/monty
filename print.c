@@ -8,7 +8,7 @@
  */
 void pall(stack_t **head, unsigned int line_number)
 {
-	stack_t temp = NULL;
+	stack_t *temp = NULL;
 
 	if (!head || !*head)/*account for empty stack*/
 		return;
@@ -31,7 +31,7 @@ void pint(stack_t **head, unsigned int line_number)
 {
 	if (!head || !*head)
 	{
-		printf("L%u: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", head->n);/*print top value*/
