@@ -28,9 +28,12 @@ char *file_open(char *file)
 	{
 		fread(buf, 1, sz, fp);
 	}
+	else
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	fclose(fp);
-
-	printf("%s\n", buf);
 
 	return (buf);
 }
