@@ -26,7 +26,16 @@ int main(int argc, char *argv[])
 		printf("%s\n", tokens[i]);
 		i++;
 	}
-	/* place to call other functions then close file */
+
+	/**
+	* first tokenize
+	* check if each token is valid, if not throw error using index as line no
+	* if valid, execute according to command
+	* in that while loop, a function to check validity will be passed.
+	* then after we'll run each command
+	* so we pass in the full token, tokenize again, to get the number and the command
+	* then execute
+	*/
 
 	free(buffer);
 	freer(tokens);
