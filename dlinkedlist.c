@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- *add_end-node - add node at the end of doubly linked list
+ *add_end_node - add node at the end of doubly linked list
  *@head: head pointer
  *@n: data to add
  *Return: zero

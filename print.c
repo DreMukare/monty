@@ -51,14 +51,14 @@ void swap(stack_t **head, unsigned int line_number)
       printf("L%u: can't swap, stack too short\n", line_number);
       exit(EXIT_FAILURE);
     }
-  temp = (*head)->next;
-  if (temp->next != NULL)
+  temp = (*head)->next;/*temp to point to second node*/
+  if (temp->next != NULL)/*more than 2 nodes*/
     {
       (*head)->next = temp->next;
       (*head)->next->prev = *head;
 
     }
-  else
+  else/*if two nodes available*/
     {
       temp->prev->prev = temp;
       temp->prev->next = NULL;
@@ -69,7 +69,10 @@ void swap(stack_t **head, unsigned int line_number)
 }
 
 /**
- *
+ *nop - doesn't do anything
+ *@head: head pointer
+ *@line_number: node number
+ *Return: nothing
  */
 void nop(stack_t **head, unsigned int line_number)
 {
