@@ -37,17 +37,21 @@ typedef struct instruction_s
   char *opcode;
   void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
 /*monty.h entry point*/
 int main(int argc, char *argv[]);
+
 /*dlinkedlist.c*/
 int add_end_node(stack_t **head, int n);
 int del_end_node(stack_t **head);
 void free_dlist(stack_t **head);
+
 /*print.c*/
 void pall(stack_t **head, unsigned int line_number);
 void pint(stack_t **head, unsigned int line_number);
 void swap(stack_t **head, unsigned int line_number);
 void nop(stack_t **head, unsigned int line_number);
+
 /*pushpop.c*/
 void push(stack_t **head, unsigned int line_number, const char *n);
 void pop(stack_t **head, unsigned int line_number);
