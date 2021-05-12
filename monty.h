@@ -40,5 +40,8 @@ typedef struct instruction_s
 
 /*main- entry point to interpreter*/
 int main(int argc, char *argv[]);
-
+/*dlinkedlist.c*/
+int add_end_node(stack_t **head, int n);
+int del_end_node(stack_t **head);
+void free_dlist(stack_t **head);
 #endif
