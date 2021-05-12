@@ -13,7 +13,7 @@ void push(stack_t **head, unsigned int line_number, const char *n)
 	/* not integer or no agruments given */
 	if (isdigit(atoi(n)) != 0 || (atoi(n) == 0 && *n != '0'))
 	{
-		printf("L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else /* push element to stack */
@@ -34,7 +34,7 @@ void pop(stack_t **head, unsigned int line_number)
 {
 	if (head == NULL || *head == NULL)/*if stack is empty*/
 	{
-		printf("L%u: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		free_dlist(h);
 		exit(EXIT_FAILURE);
 	}

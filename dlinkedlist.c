@@ -13,11 +13,11 @@ int add_end_node(stack_t **head, int n)
 	if (!head)
 		return (-1);
 
-	new_node = malloc(sizeof(struct stack_s));/*malloc new node*/
+	new_node = malloc(sizeof(stack_t));/*malloc new node*/
 	if (!new_node)
 	{
-		printf("Error: malloc failed");
-		return (-1);
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
 	}
 
 	new_node->n = n;/*set data to new node*/
