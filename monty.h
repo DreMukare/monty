@@ -38,8 +38,6 @@ typedef struct instruction_s
   void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/*main- entry point to interpreter*/
-int main(int argc, char *argv[]);
 /*dlinkedlist.c*/
 int add_end_node(stack_t **head, int n);
 int del_end_node(stack_t **head);
