@@ -34,7 +34,7 @@ void pint(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", head->n);/*print top value*/
+	printf("%d\n", (*head)->n);/*print top value*/
 }
 
 /**

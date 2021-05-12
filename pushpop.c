@@ -35,9 +35,9 @@ void pop(stack_t **head, unsigned int line_number)
 	if (head == NULL || *head == NULL)/*if stack is empty*/
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-		free_dlist(h);
+		free_dlist(head);
 		exit(EXIT_FAILURE);
 	}
 	else /* pop element */
-	delete_end_node(h);
+	del_end_node(head);
 }

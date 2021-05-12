@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <unistd.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -43,7 +44,7 @@ char *file_open(char *file);
 
 /*dlinkedlist.c*/
 int add_end_node(stack_t **head, int n);
-int del_end_node(stack_t **head);
+void del_end_node(stack_t **head);
 void free_dlist(stack_t **head);
 
 /*print.c*/

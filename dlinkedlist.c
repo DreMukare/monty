@@ -33,6 +33,7 @@ int add_end_node(stack_t **head, int n)
 		(*head)->prev = new_node;
 		*head = new_node;
 	}
+
 	return (0);
 }
 
@@ -41,9 +42,9 @@ int add_end_node(stack_t **head, int n)
  *@head: head pointer
  *Return: nothing
  */
-int del_end_node(stack_t **head)
+void del_end_node(stack_t **head)
 {
-	stack_t del = NULL;
+	stack_t *del = NULL;
 
 	del = *head;
 	if ((*head)->next == NULL)/*account for one node*/
