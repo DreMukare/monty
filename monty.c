@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
 {
 	char *buffer = NULL, **tokens = NULL;
 	int i = 0;
+	unsigned int line_number = 1;
 
 	if (argc != 2)
 	{

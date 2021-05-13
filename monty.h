@@ -66,4 +66,7 @@ void freer(char **buf);
 /* execute */
 void execute_ops(stack_t **stack, unsigned int line_number, char *token);
 
+/* frees entire stack */
+void free_stack(stack_t **stack, unsigned int line_number);
+
 #endif
