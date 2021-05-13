@@ -8,9 +8,30 @@
 */
 char **tokenizer(char *input)
 {
-	char **tokens = malloc(sizeof(input));
-	int i = 0;
-	char *p = strtok(input, "\n");
+	char **tokens = NULL;
+	char *buf = NULL, *bufp = NULL, *token = NULL, *delim = "\n";
+	size_t i = 0, flag = 0;
+	int tokensize = 1;
+
+	buf = strdup(input);
+	if (!buf)
+		return (NULL);
+	bufp = buf;
+
+	while (*bufp)
+	{
+		if (strchr(delim, *bufp) != NULL && flag == 0)
+		{
+			tokensize++;
+			flag = 1;
+		}
+		else if (strchr(delim, *bufp) == NULL && flag == 1)
+			flag = 0;
+		bufp++;
+	}
+
+	tokens = malloc(sizeof(char *) * (tokensize + 1));
+	token = strtok(buf, delim);
 
 	if (!tokens)
 	{
@@ -18,13 +39,18 @@ char **tokenizer(char *input)
 		exit(EXIT_FAILURE);
 	}
 
-	while (p != NULL)
+	while (token)
 	{
-		tokens[i] = p;
+		tokens[i] = strdup(token);
+		if (tokens[i] == NULL)
+		{
+			free(tokens);
+			return (NULL);
+		}
+		token = strtok(NULL, delim);
 		i++;
-		p = strtok(NULL, "\n");
 	}
-	
-	free(p);
+	tokens[i] = '\0';
+	free(buf);
 	return (tokens);
 }

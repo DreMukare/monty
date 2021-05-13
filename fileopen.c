@@ -8,8 +8,8 @@
 */
 char *file_open(char *file)
 {
-	FILE *fp;
-	char *buf;
+	FILE *fp = NULL;
+	char *buf = NULL;
 	int prev, sz, result = access(file, F_OK);
 
 	fp = fopen(file, "r");
@@ -23,10 +23,10 @@ char *file_open(char *file)
 	fseek(fp, 0L, SEEK_END);
 	sz = ftell(fp);
 	fseek(fp, prev, SEEK_SET);
-	buf = malloc(sizeof(char) * sz);
+	buf = malloc(sizeof(char) * sz + 1);
 	if (buf)
 	{
-		fread(buf, 1, sz, fp);
+		fread(buf, sizeof(char), sz, fp);
 	}
 	else
 	{

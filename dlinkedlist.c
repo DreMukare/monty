@@ -8,7 +8,7 @@
  */
 int add_end_node(stack_t **head, int n)
 {
-	stack_t *new_node;
+	stack_t *new_node = NULL;
 
 	if (!head)
 		return (-1);

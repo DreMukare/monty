@@ -8,7 +8,7 @@
  */
 int main(int argc, char *argv[])
 {
-	char *buffer, **tokens;
+	char *buffer = NULL, **tokens = NULL;
 	int i = 0;
 
 	if (argc != 2)
