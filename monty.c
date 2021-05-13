@@ -8,34 +8,34 @@
  */
 int main(int argc, char *argv[])
 {
-	char *buffer;
+  char *buffer = NULL, *token;
+  unsigned int linenum = 1;
+  stack_t *stk = NULL;
 	FILE *file;
-	ssize_t n_read;
+	size_t n = 0;
 
 	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	file = fopen(argv[1], "r");
+	file = fopen(argv[1], "r");/*open file*/
 	if (file == NULL)
 	{
 		printf("Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	buffer = malloc(sizeof(char) * 10000);
-	if (!buffer)
-		return (0);
-	n_read = read(fd, buffer, 10000);
-	if (n_read == -1)
-	{
-		free(buffer);
-		close(fd);
-		exit(EXIT_FAILURE);
-	}
-	/* place to call other functions then close file */
-
+	while (getline(&buffer, &n, file) != -1)
+	  {
+	    /*tokenize and execute*/
+	  if (buffer != '\n')/*delimiter newline*/
+	    {
+	      token = strtok(buffer, "\n");
+	      tokenizer(token, stk, linenum)/*call the func*/
+	    }
+	  linenum++;
+	  }
+	fclose(file);
 	free(buffer);
-	close(fd);
 	return (0);
 }
