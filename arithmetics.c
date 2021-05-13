@@ -18,10 +18,10 @@ void add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	adding = value;
+	adding = variable.value;
 	pop(stack, line_number);
-	adding += value;
+	adding += variable.value;
 	pop(stack, line_number);
-	value = adding;
-	push(stack, line_number, value);
+	variable.value = adding;
+	push(stack, line_number, variable.value);
 }

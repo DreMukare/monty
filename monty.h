@@ -9,7 +9,19 @@
 #include <unistd.h>
 #include <ctype.h>
 
-extern int value;
+/**
+* struct value - holds value in global scope
+* @value: actual value
+*
+* Description: to allow me to access this value globally
+*/
+typedef struct value
+{
+	int value;
+} value_s;
+
+extern value_s variable;
+value_s variable;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

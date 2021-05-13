@@ -25,7 +25,7 @@ void tokenizer(char *input, stack_t **stack, unsigned int line_number)
 			free_stack(stack, line_number);
 			exit(EXIT_FAILURE);
 		}
-		value = atoi(token);
+		variable.value = atoi(token);
 		execute_ops(stack, line_number, tokens);
 	}
 	else
