@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -26,6 +26,8 @@ int main(int argc, char *argv[])
 		printf("%s\n", tokens[i]);
 		i++;
 	}
+	printf("This is the length of the tokens array: %d\n", sizeof(tokens));
+	execute_ops(tokens, line_number);
 
 	/**
 	* first tokenize

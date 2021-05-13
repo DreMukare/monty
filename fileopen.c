@@ -15,7 +15,7 @@ char *file_open(char *file)
 	fp = fopen(file, "r");
 	if (!fp || result != 0)
 	{
-		fprintf(stderr, "Error: can't open file %s\n", file);
+		dprintf(STDERR_FILENO, "Error: can't open file %s\n", file);
 		exit(EXIT_FAILURE);
 	}
 
@@ -30,7 +30,7 @@ char *file_open(char *file)
 	}
 	else
 	{
-		fprintf(stderr, "Error: malloc failed\n");
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	fclose(fp);

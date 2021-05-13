@@ -63,4 +63,7 @@ char **tokenizer(char *input);
 /* frees pointers to pointers */
 void freer(char **buf);
 
+/* execute */
+void execute_ops(stack_t **stack, unsigned int line_number, char *token);
+
 #endif
