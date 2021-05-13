@@ -8,9 +8,11 @@
  */
 int main(int argc, char *argv[])
 {
-	char *buffer = NULL, **tokens = NULL;
-	int i = 0;
+	FILE *fp = NULL;
+	char *buffer = NULL, *str = NULL;
+	size_t s = 0;
 	unsigned int line_number = 1;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -18,29 +20,24 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	buffer = file_open(argv[1]);
-
-	tokens = tokenizer(buffer);
-
-	while (tokens[i] != NULL)
+	fp = fopen(argv[1], "r");
+	if (!fp)
 	{
-		printf("%s\n", tokens[i]);
-		i++;
+		dprintf(STDERR_FILENO, "Error: Can't open this file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
 	}
-	printf("This is the length of the tokens array: %d\n", sizeof(tokens));
-	execute_ops(tokens, line_number);
-
-	/**
-	* first tokenize
-	* check if each token is valid, if not throw error using index as line no
-	* if valid, execute according to command
-	* in that while loop, a function to check validity will be passed.
-	* then after we'll run each command
-	* so we pass in the full token, tokenize again, to get the number and the command
-	* then execute
-	*/
-
+	while (getline(&buffer, &s, fp) != -1)
+	{
+		if (*buffer != '\n')
+		{
+			str = strtok(buffer, "\n");
+			tokenizer(str, &stack, line_number);
+		}
+		line_number++;
+	}
+	fclose(fp);
 	free(buffer);
-	freer(tokens);
+	if (stack != NULL)
+		free_stack(&stack, line_number);
 	return (0);
 }

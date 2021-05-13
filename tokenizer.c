@@ -3,54 +3,31 @@
 /**
 * tokenizer - tokenizes string
 * @input: string to be tokenized
+* @stack: pointer to pointer to stack
+* @line_number: the number of the line where command is
 *
-* Return: array of tokenized string
+* Return: nothing
 */
-char **tokenizer(char *input)
+void tokenizer(char *input, stack_t **stack, unsigned int line_number)
 {
-	char **tokens = NULL;
-	char *buf = NULL, *bufp = NULL, *token = NULL, *delim = "\n";
-	size_t i = 0, flag = 0;
-	int tokensize = 1;
+	char *token = NULL, *tokens = NULL;
 
-	buf = strdup(input);
-	if (!buf)
-		return (NULL);
-	bufp = buf;
-
-	while (*bufp)
+	token = strtok(input, " ");
+	if (!token || *token == '\n' || *token == '#' || *token == ' ')
+		return;
+	if (strcmp(token, "push") == 0)
 	{
-		if (strchr(delim, *bufp) != NULL && flag == 0)
+		tokens = token;
+		token = strtok(NULL, " ");
+		if (check_digit(token) == 0)
 		{
-			tokensize++;
-			flag = 1;
+			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+			free_stack(stack, line_number);
+			exit(EXIT_FAILURE);
 		}
-		else if (strchr(delim, *bufp) == NULL && flag == 1)
-			flag = 0;
-		bufp++;
+		value = atoi(token);
+		execute_ops(stack, line_number, tokens);
 	}
-
-	tokens = malloc(sizeof(char *) * (tokensize + 1));
-	token = strtok(buf, delim);
-
-	if (!tokens)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-
-	while (token)
-	{
-		tokens[i] = strdup(token);
-		if (tokens[i] == NULL)
-		{
-			free(tokens);
-			return (NULL);
-		}
-		token = strtok(NULL, delim);
-		i++;
-	}
-	tokens[i] = '\0';
-	free(buf);
-	return (tokens);
+	else
+		execute_ops(stack, line_number, token);
 }

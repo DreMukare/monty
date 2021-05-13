@@ -9,6 +9,8 @@
 #include <unistd.h>
 #include <ctype.h>
 
+extern int value;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -54,11 +56,14 @@ void swap(stack_t **head, unsigned int line_number);
 void nop(stack_t **head, unsigned int line_number);
 
 /*pushpop.c*/
-void push(stack_t **head, unsigned int line_number, const char *n);
+void push(stack_t **head, unsigned int line_number, int n);
 void pop(stack_t **head, unsigned int line_number);
 
+/* arithmetics.c */
+void add(stack_t **stk, unsigned int linenum);
+
 /* tokenizer */
-char **tokenizer(char *input);
+void tokenizer(char *input, stack_t **stack, unsigned int line_number);
 
 /* frees pointers to pointers */
 void freer(char **buf);
@@ -68,5 +73,8 @@ void execute_ops(stack_t **stack, unsigned int line_number, char *token);
 
 /* frees entire stack */
 void free_stack(stack_t **stack, unsigned int line_number);
+
+/* check for digit */
+int check_digit(char *token);
 
 #endif
