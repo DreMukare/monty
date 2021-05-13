@@ -18,7 +18,7 @@ void push(stack_t **head, unsigned int line_number, int n)
 	}
 	else /* push element to stack */
 	{
-		if (add_end_node(head, n) == -1) 
+		if (add_end_node(head, n) == -1)
 		{
 			free_dlist(head);
 			exit(EXIT_FAILURE);

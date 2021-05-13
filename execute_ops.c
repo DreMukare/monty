@@ -4,7 +4,7 @@
 * execute_ops - executes according to operaction code
 * @stack: pointer to pointer to stack
 * @line_number: number of the line
-* @tokens: tokenized input
+* @token: tokenized input
 *
 * Return: nothing
 */
@@ -31,7 +31,7 @@ void execute_ops(stack_t **stack, unsigned int line_number, char *token)
 		}
 		i++;
 	}
-	
+
 	printf("L%d: unknown instruction %s\n", line_number, token);
 	free_stack(stack, line_number);
 	exit(EXIT_FAILURE);
