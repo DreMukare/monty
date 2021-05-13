@@ -57,5 +57,6 @@ void push(stack_t **head, unsigned int line_number, const char *n);
 void pop(stack_t **head, unsigned int line_number);
 /*calculator.c*/
 void _add(stack_t **head, unsigned int line_number);
+void _sub(stack_t **head, unsigned int line_number);
 
 #endif

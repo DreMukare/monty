@@ -18,3 +18,21 @@ void _add(stack_t **head, unsigned int line_number)
   free((*head)->prev);
   (*head)->prev = NULL;
 }
+
+/**
+ * _sub - subtract second element from top element
+ * @head: top node
+ * @line_number: line of command
+ */
+void _sub(stack_t **head, unsigned int line_number)
+{
+  if (*head == NULL || (*head)->next == NULL)
+    {
+      printf("L%u: can't sub, stack too short\n", line_number);
+      exit(EXIT_FAILURE);
+    }
+  (*head)->next->n -= (*head)->n;
+  (*head) = (*head)->next;
+  free((*head)->prev);
+  (*head)->prev = NULL;
+}
