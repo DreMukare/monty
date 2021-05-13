@@ -14,6 +14,7 @@ void _add(stack_t **head, unsigned int line_number)
       exit(EXIT_FAILURE);
     }
   (*head)->next->n += (*head)->n;/*add the nodes data*/
-  (*head) = (*head)->next;
+  (*head) = (*head)->next;/*store in second node*/
+  free((*head)->prev);
   (*head)->prev = NULL;
 }
