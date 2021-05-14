@@ -46,7 +46,7 @@ void pint(stack_t **head, unsigned int line_number)
  */
 void swap(stack_t **head, unsigned int line_number)
 {
-	stack_t *temp = NULL;
+  int i;
 
 	/* if stack got less than 2 elements */
 	if (*head == NULL || head == NULL || (*head)->next == NULL)
@@ -55,20 +55,9 @@ void swap(stack_t **head, unsigned int line_number)
 		free_stack(head, line_number);
 		exit(EXIT_FAILURE);
 	}
-	temp = (*head)->next;/*temp to point to second node*/
-	if (temp->next != NULL)/*more than 2 nodes*/
-	{
-		(*head)->next = temp->next;
-		(*head)->next->prev = *head;
-	}
-	else /* if two nodes available */
-	{
-		temp->prev->prev = temp;
-		temp->prev->next = NULL;
-	}
-	temp->prev = NULL;
-	temp->next = *head;
-	(*head) = temp;
+	i = (*head)->n;
+	(*head)->n = (*head)->next->n;
+	(*head)->next->n = i;
 }
 
 /**
