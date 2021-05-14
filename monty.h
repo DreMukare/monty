@@ -21,6 +21,7 @@ typedef struct value
 } value_s;
 
 extern value_s variable;
+value_s variable;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
