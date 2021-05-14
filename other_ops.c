@@ -72,3 +72,26 @@ void _rotl(stack_t **head, unsigned int line_number)
   (*head)->prev = NULL;
   temp->next->next = NULL;
 }
+
+/**
+ * _rotr -rotates the stack at the bottom
+ * @head: stack pointer
+ * @line_number: line number
+ * Return: void
+ */
+void _rotr(stack_t **head, unsigned int line_number)
+{
+  (void) line_number;
+  stack_t *temp;
+  if (head == NULL || *head == NULL || (*head)->next == NULL)
+    return;
+  temp = *head;
+  while (temp->next != NULL)
+    temp = temp->next;
+
+  temp->next = *head;
+  temp->prev->next = NULL;
+  temp->prev = NULL;
+  (*head)->prev = temp;
+  *head = temp;
+}

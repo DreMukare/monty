@@ -26,6 +26,7 @@ void execute_ops(stack_t **stack, unsigned int line_number, char *token)
 		{"pchar", _pchar},
 		{"pstr", _pstr},
 		{"rotl", _rotl},
+		{"rotr", _rotr},
 		{NULL, NULL}
 	};
 
