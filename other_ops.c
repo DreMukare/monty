@@ -22,3 +22,30 @@ void _pchar(stack_t **head, unsigned int line_number)
       exit(EXIT_FAILURE);
     }
 }
+
+/**
+ * _pstr -prints the string starting at the top of the stack
+ * @head: stack pointer
+ * @line_number: line number
+ * Return: void
+ */
+void _pstr(stack_t **head, unsigned int line_number)
+{
+  (void) line_number;
+  stack_t *str;
+  
+  if (head == NULL || *head == NULL || variable.value == 0)
+    {
+      printf("\n");
+      return;
+    }
+
+  str = *head;
+
+  while (str != NULL && str->n != 0 && isascii(str->n))
+    {
+      printf("%c", str->n);
+      str = str->next;
+    }
+  printf("\n");
+}
