@@ -74,6 +74,7 @@ void pop(stack_t **head, unsigned int line_number);
 /* arithmetics.c */
 void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
 
 /* tokenizer */
 void tokenizer(char *input, stack_t **stack, unsigned int line_number);

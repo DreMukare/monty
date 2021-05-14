@@ -20,6 +20,7 @@ void execute_ops(stack_t **stack, unsigned int line_number, char *token)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", _div},
 		{NULL, NULL}
 	};
 
