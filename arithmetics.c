@@ -83,3 +83,29 @@ void _div(stack_t **stack, unsigned int line_number)
   variable.value = divide;
   push(stack, line_number);
 }
+
+/**
+ * _mul - multiplies second top element of stack with top element
+ * @stack: stack
+ * @line_number: line number
+ * Return: void
+ */
+void _mul(stack_t **stack, unsigned int line_number)
+{
+  int multiply;
+
+  if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+    {
+      dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n",
+	      line_number);
+      free_stack(stack, line_number);
+      exit(EXIT_FAILURE);
+    }
+
+  multiply = variable.value;
+  pop(stack, line_number);
+  multiply = variable.value * multiply;
+  pop(stack, line_number);
+  variable.value = multiply;
+  push(stack, line_number);
+}
