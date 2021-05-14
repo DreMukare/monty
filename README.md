@@ -1,4 +1,9 @@
 # Monty
+> This is an introductory project that explains what LIFO and FIFO mean
+> What a stack is, and when to use it what a queue is, and when to use it
+> What are the common implementations of stacks and queues what are the
+> most common use cases of stacks and queues, what is the proper way to
+> use global variables, and how to work with git submodules.
 
 Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
 
@@ -76,3 +81,7 @@ These are the available Operation Codes:
 | rotr | Rotates the bottom of the stack to the top of the stack. |
 | stack | This is the default behavior. Sets the format of the data into a stack (LIFO). |
 | queue | Sets the format of the data into a queue (FIFO). |
+
+### Authors
+* [Andrew Mukare](https://github.com/JudgeFudge19)
+* [Jane Ng'ethe](https://github.com/Janengethe)

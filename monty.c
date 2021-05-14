@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 1;
 	stack_t *stack = NULL;
 
+
 	if (argc != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
