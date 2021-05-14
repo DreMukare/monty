@@ -8,11 +8,13 @@
  */
 void pall(stack_t **head, unsigned int line_number)
 {
-	stack_t temp = NULL;
+	stack_t *temp = NULL;
 
 	if (!head || !*head)/*account for empty stack*/
-		return;
-	(void) line_number;
+	{
+		dprintf(STDERR_FILENO, "L%d: invalid stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	temp = *head;
 	while (temp != NULL)/*print data in stack*/
 	{
@@ -31,10 +33,10 @@ void pint(stack_t **head, unsigned int line_number)
 {
 	if (!head || !*head)
 	{
-		printf("L%u: can't pint, stack empty\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", head->n);/*print top value*/
+	printf("%d\n", (*head)->n);/*print top value*/
 }
 
 /**
@@ -47,9 +49,10 @@ void swap(stack_t **head, unsigned int line_number)
 	stack_t *temp = NULL;
 
 	/* if stack got less than 2 elements */
-	if (*head == NULL || (*head)->next == NULL)
+	if (*head == NULL || head == NULL || (*head)->next == NULL)
 	{
-		printf("L%u: can't swap, stack too short\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line_number);
+		free_stack(head, line_number);
 		exit(EXIT_FAILURE);
 	}
 	temp = (*head)->next;/*temp to point to second node*/

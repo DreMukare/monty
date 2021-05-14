@@ -5,20 +5,20 @@
  * @line_number: bytecode line number
  * @n: integer to push to stack
  */
-void push(stack_t **head, unsigned int line_number, const char *n)
+void push(stack_t **head, unsigned int line_number, int n)
 {
 	if (!head)
 		return;
 
 	/* not integer or no agruments given */
-	if (isdigit(atoi(n)) != 0 || (atoi(n) == 0 && *n != '0'))
+	if (!n)
 	{
-		printf("L%u: usage: push integer\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else /* push element to stack */
 	{
-		if (add_end_node(head, atoi(n)) == -1)
+		if (add_end_node(head, n) == -1)
 		{
 			free_dlist(head);
 			exit(EXIT_FAILURE);
@@ -34,10 +34,10 @@ void pop(stack_t **head, unsigned int line_number)
 {
 	if (head == NULL || *head == NULL)/*if stack is empty*/
 	{
-		printf("L%u: can't pop an empty stack\n", line_number);
-		free_dlist(h);
+		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", line_number);
+		free_dlist(head);
 		exit(EXIT_FAILURE);
 	}
 	else /* pop element */
-	delete_end_node(h);
+	del_end_node(head);
 }

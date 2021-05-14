@@ -8,16 +8,16 @@
  */
 int add_end_node(stack_t **head, int n)
 {
-	stack_t *new_node;
+	stack_t *new_node = NULL;
 
 	if (!head)
 		return (-1);
 
-	new_node = malloc(sizeof(struct stack_s));/*malloc new node*/
+	new_node = malloc(sizeof(stack_t));/*malloc new node*/
 	if (!new_node)
 	{
-		printf("Error: malloc failed");
-		return (-1);
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
 	}
 
 	new_node->n = n;/*set data to new node*/
@@ -33,6 +33,7 @@ int add_end_node(stack_t **head, int n)
 		(*head)->prev = new_node;
 		*head = new_node;
 	}
+
 	return (0);
 }
 
@@ -41,9 +42,9 @@ int add_end_node(stack_t **head, int n)
  *@head: head pointer
  *Return: nothing
  */
-int del_end_node(stack_t **head)
+void del_end_node(stack_t **head)
 {
-	stack_t del = NULL;
+	stack_t *del = NULL;
 
 	del = *head;
 	if ((*head)->next == NULL)/*account for one node*/
