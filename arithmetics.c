@@ -109,3 +109,36 @@ void _mul(stack_t **stack, unsigned int line_number)
   variable.value = multiply;
   push(stack, line_number);
 }
+
+/**
+ * _mod -computes the rest of the division of the second
+ * top element of the stack by the top element of the stack
+ * @stack: stack
+ * @line_number: line number
+ * Return: void
+ */
+void _mod(stack_t **stack, unsigned int line_number)
+{
+  int rem;
+
+  if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+    {
+      dprintf(STDERR_FILENO, "L%d: can't mod, stack too short\n",
+	      line_number);
+      free_stack(stack, line_number);
+      exit(EXIT_FAILURE);
+    }
+  if (variable.value == 0)
+    {
+      printf("L%d: division by zero\n", line_number);
+      free_stack(stack, line_number);
+      exit(EXIT_FAILURE);
+    }
+
+  rem = variable.value;
+  pop(stack, line_number);
+  rem = variable.value % rem;
+  pop(stack, line_number);
+  variable.value = rem;
+  push(stack, line_number);
+}
