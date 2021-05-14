@@ -68,7 +68,7 @@ void swap(stack_t **head, unsigned int line_number);
 void nop(stack_t **head, unsigned int line_number);
 
 /*pushpop.c*/
-void push(stack_t **head, unsigned int line_number, int n);
+void push(stack_t **head, unsigned int line_number);
 void pop(stack_t **head, unsigned int line_number);
 /*calculator.c*/
 void _add(stack_t **head, unsigned int line_number);

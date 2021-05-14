@@ -23,5 +23,5 @@ void add(stack_t **stack, unsigned int line_number)
 	adding += variable.value;
 	pop(stack, line_number);
 	variable.value = adding;
-	push(stack, line_number, variable.value);
+	push(stack, line_number);
 }

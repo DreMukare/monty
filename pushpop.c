@@ -5,20 +5,20 @@
  * @line_number: bytecode line number
  * @n: integer to push to stack
  */
-void push(stack_t **head, unsigned int line_number, int n)
+void push(stack_t **head, unsigned int line_number)
 {
 	if (!head)
 		return;
 
 	/* not integer or no agruments given */
-	if (!n)
+	if (!variable.value)
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else /* push element to stack */
 	{
-		if (add_end_node(head, n) == -1)
+		if (add_end_node(head, variable.value) == -1)
 		{
 			free_dlist(head);
 			exit(EXIT_FAILURE);
