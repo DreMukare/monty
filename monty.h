@@ -8,6 +8,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
+#include <fcntl.h>
+#include <stdarg.h>
 
 /**
 * struct value - holds value in global scope
