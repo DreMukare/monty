@@ -80,6 +80,9 @@ void _div(stack_t **stack, unsigned int line_number);
 void _mul(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);
 
+/*other_ops.c*/
+void _pchar(stack_t **head, unsigned int line_number);
+
 /* tokenizer */
 void tokenizer(char *input, stack_t **stack, unsigned int line_number);
 
