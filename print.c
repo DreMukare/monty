@@ -10,7 +10,7 @@ void pall(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp = NULL;
 
-	if (!head || !*head)/*account for empty stack*/
+	if (head == NULL)/*account for empty stack*/
 	{
 		dprintf(STDERR_FILENO, "L%d: invalid stack\n", line_number);
 		exit(EXIT_FAILURE);
