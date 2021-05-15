@@ -8,19 +8,20 @@
  */
 void _pchar(stack_t **head, unsigned int line_number)
 {
-  if (head == NULL || *head == NULL)
-    {
-      dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n",
-	      line_number);
-      exit(EXIT_FAILURE);
-    }
-  if (isascii(variable.value))
-    printf("%c\n", variable.value);
-  else
-    {
-      dprintf(STDERR_FILENO, "L%d: can't pchar, value out of range\n", line_number);
-      exit(EXIT_FAILURE);
-    }
+	if (head == NULL || *head == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n",
+			line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (isascii(variable.value))
+		printf("%c\n", variable.value);
+	else
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pchar, value out of range\n",
+			line_number);
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
@@ -31,23 +32,23 @@ void _pchar(stack_t **head, unsigned int line_number)
  */
 void _pstr(stack_t **head, unsigned int line_number)
 {
-  (void) line_number;
-  stack_t *str;
-  
-  if (head == NULL || *head == NULL || variable.value == 0)
-    {
-      printf("\n");
-      return;
-    }
+	(void) line_number;
+	stack_t *str;
 
-  str = *head;
+	if (head == NULL || *head == NULL || variable.value == 0)
+	{
+		printf("\n");
+		return;
+	}
 
-  while (str != NULL && str->n != 0 && isascii(str->n))
-    {
-      printf("%c", str->n);
-      str = str->next;
-    }
-  printf("\n");
+	str = *head;
+
+	while (str != NULL && str->n != 0 && isascii(str->n))
+	{
+		printf("%c", str->n);
+		str = str->next;
+	}
+	printf("\n");
 }
 
 /**
@@ -58,19 +59,20 @@ void _pstr(stack_t **head, unsigned int line_number)
  */
 void _rotl(stack_t **head, unsigned int line_number)
 {
-  (void) line_number;
-  stack_t *temp;
-  if (head == NULL || *head == NULL || (*head)->next == NULL)
-    return;
-  temp = *head;
-  while(temp->next != NULL)
-    temp = temp->next;
+	(void) line_number;
+	stack_t *temp;
 
-  temp->next = *head;
-  (*head)->prev = temp;
-  *head = (*head)->next;
-  (*head)->prev = NULL;
-  temp->next->next = NULL;
+	if (head == NULL || *head == NULL || (*head)->next == NULL)
+		return;
+	temp = *head;
+	while (temp->next != NULL)
+		temp = temp->next;
+
+	temp->next = *head;
+	(*head)->prev = temp;
+	*head = (*head)->next;
+	(*head)->prev = NULL;
+	temp->next->next = NULL;
 }
 
 /**
@@ -81,17 +83,18 @@ void _rotl(stack_t **head, unsigned int line_number)
  */
 void _rotr(stack_t **head, unsigned int line_number)
 {
-  (void) line_number;
-  stack_t *temp;
-  if (head == NULL || *head == NULL || (*head)->next == NULL)
-    return;
-  temp = *head;
-  while (temp->next != NULL)
-    temp = temp->next;
+	(void) line_number;
+	stack_t *temp;
 
-  temp->next = *head;
-  temp->prev->next = NULL;
-  temp->prev = NULL;
-  (*head)->prev = temp;
-  *head = temp;
+	if (head == NULL || *head == NULL || (*head)->next == NULL)
+		return;
+	temp = *head;
+	while (temp->next != NULL)
+		temp = temp->next;
+
+	temp->next = *head;
+	temp->prev->next = NULL;
+	temp->prev = NULL;
+	(*head)->prev = temp;
+	*head = temp;
 }

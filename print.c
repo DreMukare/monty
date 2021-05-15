@@ -46,7 +46,7 @@ void pint(stack_t **head, unsigned int line_number)
  */
 void swap(stack_t **head, unsigned int line_number)
 {
-  int i;
+	int i;
 
 	/* if stack got less than 2 elements */
 	if (*head == NULL || head == NULL || (*head)->next == NULL)

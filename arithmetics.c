@@ -34,21 +34,21 @@ void add(stack_t **stack, unsigned int line_number)
  */
 void sub(stack_t **stack, unsigned int line_number)
 {
-  int subtract;
+	int subtract;
 
-  if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-    {
-      printf("L%d: can't sub, stack too short\n", line_number);
-      free_stack(stack, line_number);
-      exit(EXIT_FAILURE);
-    }
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		printf("L%d: can't sub, stack too short\n", line_number);
+		free_stack(stack, line_number);
+		exit(EXIT_FAILURE);
+	}
 
-  subtract = variable.value;
-  pop(stack, line_number);
-  subtract = variable.value - subtract;
-  pop(stack, line_number);
-  variable.value = subtract;
-  push(stack, line_number);
+	subtract = variable.value;
+	pop(stack, line_number);
+	subtract = variable.value - subtract;
+	pop(stack, line_number);
+	variable.value = subtract;
+	push(stack, line_number);
 }
 
 /**
@@ -59,29 +59,29 @@ void sub(stack_t **stack, unsigned int line_number)
  */
 void _div(stack_t **stack, unsigned int line_number)
 {
-  int divide;
+	int divide;
 
-  if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-    {
-      dprintf(STDERR_FILENO, "L%d: can't div, stack too short\n",
-	      line_number);
-      free_stack(stack, line_number);
-      exit(EXIT_FAILURE);
-    }
-  if (variable.value == 0)
-    {
-      dprintf(STDERR_FILENO, "L%d: division by zero\n",
-	      line_number);
-      free_stack(stack, line_number);
-      exit(EXIT_FAILURE);
-    }
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't div, stack too short\n",
+			line_number);
+		free_stack(stack, line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (variable.value == 0)
+	{
+		dprintf(STDERR_FILENO, "L%d: division by zero\n",
+			line_number);
+		free_stack(stack, line_number);
+		exit(EXIT_FAILURE);
+	}
 
-  divide = variable.value;
-  pop(stack, line_number);
-  divide = variable.value / divide;
-  pop(stack, line_number);
-  variable.value = divide;
-  push(stack, line_number);
+	divide = variable.value;
+	pop(stack, line_number);
+	divide = variable.value / divide;
+	pop(stack, line_number);
+	variable.value = divide;
+	push(stack, line_number);
 }
 
 /**
@@ -92,22 +92,22 @@ void _div(stack_t **stack, unsigned int line_number)
  */
 void _mul(stack_t **stack, unsigned int line_number)
 {
-  int multiply;
+	int multiply;
 
-  if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-    {
-      dprintf(STDERR_FILENO, "L%d: can't mul, stack too short\n",
-	      line_number);
-      free_stack(stack, line_number);
-      exit(EXIT_FAILURE);
-    }
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't mul, stack too short\n",
+			line_number);
+		free_stack(stack, line_number);
+		exit(EXIT_FAILURE);
+	}
 
-  multiply = variable.value;
-  pop(stack, line_number);
-  multiply = variable.value * multiply;
-  pop(stack, line_number);
-  variable.value = multiply;
-  push(stack, line_number);
+	multiply = variable.value;
+	pop(stack, line_number);
+	multiply = variable.value * multiply;
+	pop(stack, line_number);
+	variable.value = multiply;
+	push(stack, line_number);
 }
 
 /**
@@ -119,26 +119,26 @@ void _mul(stack_t **stack, unsigned int line_number)
  */
 void _mod(stack_t **stack, unsigned int line_number)
 {
-  int rem;
+	int rem;
 
-  if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-    {
-      dprintf(STDERR_FILENO, "L%d: can't mod, stack too short\n",
-	      line_number);
-      free_stack(stack, line_number);
-      exit(EXIT_FAILURE);
-    }
-  if (variable.value == 0)
-    {
-      printf("L%d: division by zero\n", line_number);
-      free_stack(stack, line_number);
-      exit(EXIT_FAILURE);
-    }
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't mod, stack too short\n",
+			line_number);
+		free_stack(stack, line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (variable.value == 0)
+	{
+		printf("L%d: division by zero\n", line_number);
+		free_stack(stack, line_number);
+		exit(EXIT_FAILURE);
+	}
 
-  rem = variable.value;
-  pop(stack, line_number);
-  rem = variable.value % rem;
-  pop(stack, line_number);
-  variable.value = rem;
-  push(stack, line_number);
+	rem = variable.value;
+	pop(stack, line_number);
+	rem = variable.value % rem;
+	pop(stack, line_number);
+	variable.value = rem;
+	push(stack, line_number);
 }
